@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b55c3b27-59c5-44de-a9a0-a569e458e23e" name="Changes" comment="First commit?">
-      <change afterPath="$PROJECT_DIR$/.idea/PendulumRENKKL.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KKL/KKL.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KKL/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ODESolver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ODESolver/odesolvers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pendulum/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pendulum/pendulum.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/REN/REN.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/REN/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Train/BackwardTrraining.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Train/OnlineTraining.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Train/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
-    </list>
+    <list default="true" id="b55c3b27-59c5-44de-a9a0-a569e458e23e" name="Changes" comment="First commit?" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,12 +89,32 @@
       <workItem from="1759875214724" duration="1695000" />
       <workItem from="1759910386873" duration="18855000" />
       <workItem from="1759962112781" duration="11752000" />
-      <workItem from="1760015398152" duration="9306000" />
+      <workItem from="1760015398152" duration="9848000" />
     </task>
+    <task id="LOCAL-00001" summary="First commit?">
+      <option name="closed" value="true" />
+      <created>1760089694704</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1760089694704</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit?" />
