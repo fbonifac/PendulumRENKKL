@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b55c3b27-59c5-44de-a9a0-a569e458e23e" name="Changes" comment="First commit?">
+      <change afterPath="$PROJECT_DIR$/.idea/PendulumRENKKL.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/KKL/KKL.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/KKL/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ODESolver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ODESolver/odesolvers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pendulum/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pendulum/pendulum.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/REN/REN.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/REN/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Train/BackwardTrraining.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Train/OnlineTraining.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Train/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="30ri0yhPk7DG1LHU91TLsNtlUN5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.KKL.executor&quot;: &quot;Run&quot;,
+    &quot;Python.OnlineTraining.executor&quot;: &quot;Run&quot;,
+    &quot;Python.REN.executor&quot;: &quot;Run&quot;,
+    &quot;Python.odesolvers.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pendulum.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PY-251.26927.74" />
+        <option value="bundled-python-sdk-657d8234b839-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.74" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b55c3b27-59c5-44de-a9a0-a569e458e23e" name="Changes" comment="" />
+      <created>1754391873089</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754391873089</updated>
+      <workItem from="1754391874187" duration="37397000" />
+      <workItem from="1754897177796" duration="45691000" />
+      <workItem from="1755160054096" duration="15107000" />
+      <workItem from="1755599995607" duration="73530000" />
+      <workItem from="1756136328005" duration="3079000" />
+      <workItem from="1756162061905" duration="1000" />
+      <workItem from="1756206772900" duration="19603000" />
+      <workItem from="1756297208961" duration="75469000" />
+      <workItem from="1756989635335" duration="29034000" />
+      <workItem from="1757322317377" duration="7193000" />
+      <workItem from="1757423227190" duration="8103000" />
+      <workItem from="1757492562129" duration="27637000" />
+      <workItem from="1757670272515" duration="4919000" />
+      <workItem from="1757682105476" duration="24134000" />
+      <workItem from="1758800870231" duration="43498000" />
+      <workItem from="1759218348089" duration="8350000" />
+      <workItem from="1759234951533" duration="40533000" />
+      <workItem from="1759408114204" duration="16565000" />
+      <workItem from="1759476962296" duration="26421000" />
+      <workItem from="1759701120776" duration="23805000" />
+      <workItem from="1759822873742" duration="24350000" />
+      <workItem from="1759875214724" duration="1695000" />
+      <workItem from="1759910386873" duration="18855000" />
+      <workItem from="1759962112781" duration="11752000" />
+      <workItem from="1760015398152" duration="9306000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First commit?" />
+    <option name="LAST_COMMIT_MESSAGE" value="First commit?" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$OnlineTraining.coverage" NAME="OnlineTraining Coverage Results" MODIFIED="1760015519437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Train" />
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$KKL.coverage" NAME="KKL Coverage Results" MODIFIED="1754477687725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/KKL" />
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$pendulum.coverage" NAME="pendulum Coverage Results" MODIFIED="1759408147646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pendulum" />
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$REN.coverage" NAME="REN Coverage Results" MODIFIED="1759421951812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/REN" />
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$test.coverage" NAME="test Coverage Results" MODIFIED="1759826780983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$odesolvers.coverage" NAME="odesolvers Coverage Results" MODIFIED="1754473255432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ODESolver" />
+  </component>
+</project>
