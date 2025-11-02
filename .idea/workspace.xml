@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b55c3b27-59c5-44de-a9a0-a569e458e23e" name="Changes" comment="Push 1">
-      <change afterPath="$PROJECT_DIR$/Train/OnlineTrainMultipleTrajectories.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Train/OnlineTrainMultipleTrajectoriesPlot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KKL/KKL.py" beforeDir="false" afterPath="$PROJECT_DIR$/KKL/KKL.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ODESolver/odesolvers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ODESolver/odesolvers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pendulum/pendulum.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pendulum/pendulum.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/REN/REN.py" beforeDir="false" afterPath="$PROJECT_DIR$/REN/REN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Train/BackwardTrraining.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Train/OnlineTraining.py" beforeDir="false" afterPath="$PROJECT_DIR$/Train/OnlineTraining.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +22,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "fbonifac"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/fbonifac/PendulumRENKKL.git",
+    "accountId": "14723461-11b5-4a80-8e5b-ec0ed336df7d"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -122,7 +125,7 @@
       <workItem from="1761849040623" duration="66000" />
       <workItem from="1761901493737" duration="7188000" />
       <workItem from="1761912815323" duration="9854000" />
-      <workItem from="1762000680548" duration="17550000" />
+      <workItem from="1762000680548" duration="21510000" />
     </task>
     <task id="LOCAL-00001" summary="First commit?">
       <option name="closed" value="true" />
@@ -140,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760090199459</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Push 1">
+      <option name="closed" value="true" />
+      <created>1762102740373</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1762102740373</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
