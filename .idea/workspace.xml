@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b55c3b27-59c5-44de-a9a0-a569e458e23e" name="Changes" comment="First commit?" />
+    <list default="true" id="b55c3b27-59c5-44de-a9a0-a569e458e23e" name="Changes" comment="Push 1">
+      <change afterPath="$PROJECT_DIR$/Train/OnlineTrainMultipleTrajectories.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Train/OnlineTrainMultipleTrajectoriesPlot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KKL/KKL.py" beforeDir="false" afterPath="$PROJECT_DIR$/KKL/KKL.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ODESolver/odesolvers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ODESolver/odesolvers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pendulum/pendulum.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pendulum/pendulum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/REN/REN.py" beforeDir="false" afterPath="$PROJECT_DIR$/REN/REN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Train/BackwardTrraining.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Train/OnlineTraining.py" beforeDir="false" afterPath="$PROJECT_DIR$/Train/OnlineTraining.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +43,7 @@
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Python.KKL.executor&quot;: &quot;Run&quot;,
+    &quot;Python.OnlineTrainMultipleTrajectories.executor&quot;: &quot;Run&quot;,
     &quot;Python.OnlineTraining.executor&quot;: &quot;Run&quot;,
     &quot;Python.REN.executor&quot;: &quot;Run&quot;,
     &quot;Python.odesolvers.executor&quot;: &quot;Run&quot;,
@@ -39,8 +51,9 @@
     &quot;Python.test.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/Bonifac/Personal/UPC/UPC_work/2/PendulumRENKKL/Train&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -50,6 +63,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\Bonifac\Personal\UPC\UPC_work\2\PendulumRENKKL\Train" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -89,7 +107,22 @@
       <workItem from="1759875214724" duration="1695000" />
       <workItem from="1759910386873" duration="18855000" />
       <workItem from="1759962112781" duration="11752000" />
-      <workItem from="1760015398152" duration="9848000" />
+      <workItem from="1760015398152" duration="13364000" />
+      <workItem from="1760100347434" duration="28986000" />
+      <workItem from="1760255151422" duration="8187000" />
+      <workItem from="1760289266463" duration="6161000" />
+      <workItem from="1760344940175" duration="6565000" />
+      <workItem from="1760393461199" duration="11951000" />
+      <workItem from="1760516471551" duration="9940000" />
+      <workItem from="1760555591004" duration="2476000" />
+      <workItem from="1760699238280" duration="45375000" />
+      <workItem from="1761048822521" duration="21740000" />
+      <workItem from="1761381996733" duration="63549000" />
+      <workItem from="1761844628734" duration="4345000" />
+      <workItem from="1761849040623" duration="66000" />
+      <workItem from="1761901493737" duration="7188000" />
+      <workItem from="1761912815323" duration="9854000" />
+      <workItem from="1762000680548" duration="17550000" />
     </task>
     <task id="LOCAL-00001" summary="First commit?">
       <option name="closed" value="true" />
@@ -99,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760089694704</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Push 1">
+      <option name="closed" value="true" />
+      <created>1760090199459</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1760090199459</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,14 +159,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit?" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit?" />
+    <MESSAGE value="Push 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Push 1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PendulumRENKKL$OnlineTraining.coverage" NAME="OnlineTraining Coverage Results" MODIFIED="1760015519437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Train" />
-    <SUITE FILE_PATH="coverage/PendulumRENKKL$KKL.coverage" NAME="KKL Coverage Results" MODIFIED="1754477687725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/KKL" />
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$OnlineTraining.coverage" NAME="OnlineTraining Coverage Results" MODIFIED="1760526896847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Train" />
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$KKL.coverage" NAME="KKL Coverage Results" MODIFIED="1760948859889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/KKL" />
     <SUITE FILE_PATH="coverage/PendulumRENKKL$pendulum.coverage" NAME="pendulum Coverage Results" MODIFIED="1759408147646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pendulum" />
-    <SUITE FILE_PATH="coverage/PendulumRENKKL$REN.coverage" NAME="REN Coverage Results" MODIFIED="1759421951812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/REN" />
-    <SUITE FILE_PATH="coverage/PendulumRENKKL$test.coverage" NAME="test Coverage Results" MODIFIED="1759826780983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/PendulumRENKKL$odesolvers.coverage" NAME="odesolvers Coverage Results" MODIFIED="1754473255432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ODESolver" />
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$REN.coverage" NAME="REN Coverage Results" MODIFIED="1761910218767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/REN" />
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$OnlineTrainMultipleTrajectories.coverage" NAME="OnlineTrainMultipleTrajectories Coverage Results" MODIFIED="1762029750044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Train" />
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$test.coverage" NAME="test Coverage Results" MODIFIED="1760949429351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$odesolvers.coverage" NAME="odesolvers Coverage Results" MODIFIED="1760707105060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ODESolver" />
   </component>
 </project>

@@ -8,10 +8,10 @@ import matplotlib.pyplot as plt
 #Own code:
 from Pendulum.pendulum import PendulumSystem
 from KKL.KKL import KKLSystem
-from REN.REN import RENSystem, RENL2System
+from REN.REN import RENSystem
 
 
-def trainKKLREN(T_trans, T_step, T_test, dT, epochs, step_number, u_range, u_test, learning_rate=3.0e-3, device='cpu'):
+def trainKKLREN(T_trans, T_step, T_test, dT, step_number, u_range, u_test, learning_rate=1.0e-3, device='cpu'):
 
     torch.set_default_dtype(torch.float32)
 
@@ -25,7 +25,7 @@ def trainKKLREN(T_trans, T_step, T_test, dT, epochs, step_number, u_range, u_tes
     pendulum = PendulumSystem(np.array([1, 1]), 1.5, 0.5, 9.81)
 
     """Initialize KKL system (z transformed system):
-        -Initial state at: [0; 0; 0; 0; 0]
+        -Initial state at: [0; 0; 0; 0; 0; 0]
         -Parameters of the system:
             -A: 1000*diag(random(0,1))
             -B: ones((6, 1))
@@ -36,14 +36,14 @@ def trainKKLREN(T_trans, T_step, T_test, dT, epochs, step_number, u_range, u_tes
 
 
     """Initialize REN (Tau* transformation from (u, y, z) to (x)):
-        -Initial state at: [0; 0; 0; 0; 0; 0]
+        -Initial state at: [0; 0; 0; 0; 0; 0; 0]
         -Parameters of the system:
             -nx: 6
             -nq: 6
             -nu: 8 (6 from the z_system, 1 from the input u, 1 from the output y)
-            -ny: 2 (2 state of the pendulum)
+            -ny: 1 (1 state of the pendulum)
     """
-    model = RENSystem(6, 6, 8, 2, device=device)
+    model = RENSystem(6, 6, 8, 1, device=device)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     optimizer.zero_grad()
@@ -58,9 +58,6 @@ def trainKKLREN(T_trans, T_step, T_test, dT, epochs, step_number, u_range, u_tes
     t_trans = np.linspace(0, T_trans, N_trans+1)
     u_trans = np.zeros((1,N_trans+1))
 
-    #t = t_trans
-    #u = u_trans
-
     with torch.no_grad():
         x_trans = pendulum.simulate(t_trans, u_trans)
         y_trans = pendulum.output(x_trans)
@@ -73,11 +70,13 @@ def trainKKLREN(T_trans, T_step, T_test, dT, epochs, step_number, u_range, u_tes
         t_trans_torch = torch.from_numpy(t_trans).float()
         t_trans_torch = t_trans_torch.to(device)
 
-        x_hat_trans = model.simulate(t_trans_torch, ren_u_trans_torch)
+        ren_y_trans = model.simulate(t_trans_torch, ren_u_trans_torch)
         ren_x_start = model.x.detach()
 
-    nfe_values = np.zeros((epochs, 2))
-    loss_values = np.zeros((epochs,))
+    fnfe_values = np.array([])
+    bnfe_values = np.array([])
+    loss_values = np.array([])
+    e = 0
 
     start = time.time()
 
@@ -98,27 +97,24 @@ def trainKKLREN(T_trans, T_step, T_test, dT, epochs, step_number, u_range, u_tes
     t_epoch_torch = t_epoch_torch.to(device)
     ren_u_epoch_torch = torch.from_numpy(ren_u_epoch).float()
     ren_u_epoch_torch = ren_u_epoch_torch.to(device)
-    x_epoch_torch = torch.from_numpy(x_epoch).float()
-    x_epoch_torch = x_epoch_torch.to(device)
 
-    x_hat_epoch = model.simulate(t_epoch_torch, ren_u_epoch_torch, ren_x_start)
+    y_predict_epoch = x_epoch[1,:]
+    y_predict_epoch_torch = torch.from_numpy(y_predict_epoch).float()
+    y_predict_epoch_torch = y_predict_epoch_torch.to(device).unsqueeze(0)
 
-    """x1_min = min(min(x_epoch[0,:]), min(x_hat_epoch[0,:]))
-    x2_min = min(min(x_epoch[1,:]), min(x_hat_epoch[1,:]))
-    x1_max = max(max(x_epoch[0,:]), max(x_hat_epoch[0,:]))
-    x2_max = max(max(x_epoch[1,:]), max(x_hat_epoch[1,:]))"""
+    ren_y_epoch = model.simulate(t_epoch_torch, ren_u_epoch_torch, ren_x_start)
 
-    for e in range(epochs):
+    while (abs(loss) > 1.0e-4):
 
         model.nfe = 0
         optimizer.zero_grad()
 
-        x_hat_epoch = model.simulate(t_epoch_torch, ren_u_epoch_torch, ren_x_start)
+        ren_y_epoch = model.simulate(t_epoch_torch, ren_u_epoch_torch, ren_x_start)
 
-        loss = MSE(x_hat_epoch, x_epoch_torch)
-        print(f"Epoch #: {e+1}.\t||\t Local Loss: {loss:.4f}")
+        loss = MSE(ren_y_epoch, y_predict_epoch_torch)
+        print(f"Epoch #: {e+1}.\t||\t Local Loss: {loss:.6f}")
 
-        nfe_values[e, 0] = model.nfe
+        fnfe = model.nfe
         model.nfe = 0
 
         loss.backward()
@@ -126,30 +122,19 @@ def trainKKLREN(T_trans, T_step, T_test, dT, epochs, step_number, u_range, u_tes
 
         model.updateParameters()
 
-        nfe_values[e, 1] = model.nfe
+        bnfe = model.nfe
         model.nfe = 0
 
         with torch.no_grad():
-            loss_values[e] = loss
 
-            plt.figure()
-            plt.subplot(3, 1, 1)
-            plt.plot(t_epoch, x_epoch[0, :], linewidth=1.5, label=r'$x_1(t)$')
-            plt.plot(t_epoch, x_hat_epoch[0, :].detach().cpu(), linewidth=1.5, label=r'$\hat{x}_1(t)$')
-            #plt.ylim((x1_min, x1_max))
-            plt.xlabel(r'$time [s]$')
-            plt.ylabel(r'$x_1(t) [rad]$')
-            plt.legend(loc='best')
-
-            plt.subplot(3, 1, 2)
-            plt.plot(t_epoch, x_epoch[1, :], linewidth=1.5, label=r'$x_2(t)$')
-            plt.plot(t_epoch, x_hat_epoch[1, :].detach().cpu(), linewidth=1.5, label=r'$\hat{x}_2(t)$')
-            #plt.ylim((x2_min, x2_max))
+            plt.subplot(2, 1, 1)
+            plt.plot(t_epoch, y_predict_epoch_torch.detach().cpu().T, linewidth=1.5, label=r'$x_2(t)$')
+            plt.plot(t_epoch, ren_y_epoch.detach().cpu().T, linewidth=1.5, label=r'$\hat{x}_2(t)$')
             plt.xlabel(r'$time [s]$')
             plt.ylabel(r'$x_2(t) [rad/s]$')
             plt.legend(loc='best')
 
-            plt.subplot(3, 1, 3)
+            plt.subplot(2, 1, 2)
             plt.plot(t_epoch, np.transpose(u_epoch), linewidth=1.5, label=r'$u(t)$')
             plt.xlabel(r'$time [s]$')
             plt.ylabel(r'$u(t) [rad]$')
@@ -157,8 +142,13 @@ def trainKKLREN(T_trans, T_step, T_test, dT, epochs, step_number, u_range, u_tes
 
             plt.show()
 
-        if (abs(loss) < 1.0e-5):
-            print(f"The loss has reached a value smaller than the threshold (1.0e-5)")
+            if (abs(loss) < 1.0e-4):
+                print(f"The loss has reached a value smaller than the threshold (1.0e-4)")
+
+            e = e + 1
+            loss_values = np.append(loss_values, loss)
+            fnfe_values = np.append(fnfe_values, fnfe)
+            bnfe_values = np.append(bnfe_values, bnfe)
 
     total_time = time.time()-start
     print("")
@@ -180,15 +170,17 @@ def trainKKLREN(T_trans, T_step, T_test, dT, epochs, step_number, u_range, u_tes
         t_test_torch = t_test_torch.to(device)
         ren_u_test_torch = torch.from_numpy(ren_u_test).float()
         ren_u_test_torch = ren_u_test_torch.to(device)
-        x_test_torch = torch.from_numpy(x_test).float()
-        x_test_torch = x_test_torch.to(device)
 
-        x_hat_test = model.simulate(t_test_torch, ren_u_test_torch)
+        y_predict_test = x_test[1, :]
+        y_predict_test_torch = torch.from_numpy(y_predict_test).float()
+        y_predict_test_torch = y_predict_test_torch.to(device).unsqueeze(0)
 
-        test_loss = MSE(x_hat_test, x_test_torch)
+        ren_y_test = model.simulate(t_test_torch, ren_u_test_torch)
+
+        test_loss = MSE(ren_y_test, y_predict_test_torch)
         test_nfe = model.nfe
         print(f"\nLoss_testing: {test_loss}")
-        print(f"Final NFE-F average: {np.mean(nfe_values[:, 0])} \t||\t NFE-B average: {np.mean(nfe_values[:, 1])}")
+        print(f"Final NFE-F average: {np.mean(fnfe_values)} \t||\t NFE-B average: {np.mean(bnfe_values)}")
 
     plt.figure()
     plt.plot(loss_values)
@@ -196,22 +188,14 @@ def trainKKLREN(T_trans, T_step, T_test, dT, epochs, step_number, u_range, u_tes
     plt.xlabel('Epoch')
     plt.show()
 
-    plt.figure()
-    plt.subplot(3, 1, 1)
-    plt.plot(t_test, x_test[0, :], linewidth=1.5, label=r'$x_1(t)$')
-    plt.plot(t_test, x_hat_test[0, :].cpu().detach(), linewidth=1.5, label=r'$\hat{x}_1(t)$')
-    plt.xlabel(r'$time [s]$')
-    plt.ylabel(r'$x_1(t) [rad]$')
-    plt.legend(loc='best')
-
-    plt.subplot(3, 1, 2)
-    plt.plot(t_test, x_test[1, :], linewidth=1.5, label=r'$x_2(t)$')
-    plt.plot(t_test, x_hat_test[1, :].cpu().detach(), linewidth=1.5, label=r'$\hat{x}_2(t)$')
+    plt.subplot(2, 1, 1)
+    plt.plot(t_test, y_predict_test_torch.detach().cpu().T, linewidth=1.5, label=r'$x_2(t)$')
+    plt.plot(t_test, ren_y_test.detach().cpu().T, linewidth=1.5, label=r'$\hat{x}_2(t)$')
     plt.xlabel(r'$time [s]$')
     plt.ylabel(r'$x_2(t) [rad/s]$')
     plt.legend(loc='best')
 
-    plt.subplot(3, 1, 3)
+    plt.subplot(2, 1, 2)
     plt.plot(t_test, np.transpose(u_test), linewidth=1.5, label=r'$u(t)$')
     plt.xlabel(r'$time [s]$')
     plt.ylabel(r'$u(t) [rad]$')
@@ -219,9 +203,10 @@ def trainKKLREN(T_trans, T_step, T_test, dT, epochs, step_number, u_range, u_tes
 
     plt.show()
 
+    torch.save(model.state_dict(), "model.pt")
 
 def test_input(t):
     u = 2.0*np.sin(1.0*t)+1.0*np.sin(2.0*t)+1.0*np.sin(4.0*t)+1.0*np.sin(8.0*t)
     return u
 
-trainKKLREN(10, 2, 5, 0.01, 1000, 2, [-7, 7], test_input)
+trainKKLREN(10, 2, 5, 0.01, 2, [-7, 7], test_input)
