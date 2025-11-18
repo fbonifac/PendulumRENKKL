@@ -41,7 +41,7 @@ def train_N_KKLREN(T_trans, dT, N, T_steps, u_range, M, T_test, u_test, learning
             -nu: 8 (6 from the z_system, 1 from the input u, 1 from the output y)
             -ny: 1 (1 state of the pendulum)
     """
-    model = N_RENSystem(6, 6, 8, 1, N, bias=True, device=device)
+    model = N_RENSystem(6, 6, 8, 1, N, device=device)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     optimizer.zero_grad()
@@ -160,7 +160,10 @@ def train_N_KKLREN(T_trans, dT, N, T_steps, u_range, M, T_test, u_test, learning
     print(f"Finished Training Phase. \nTotal time required: {total_time} s")
     print(f"Final NFE-F average: {np.mean(fnfe_values)} \t||\t NFE-B average: {np.mean(bnfe_values)}")
 
-    torch.save(model.state_dict(), "model.pt")
+    print(f"Values of KKL poles:\n")
+    print(kkl.A)
+    np.savetxt("../Eval/model_KKL", kkl.A)
+    torch.save(model.state_dict(), "../Eval/model_fine.pt")
 
     with torch.no_grad():
         t_test = np.linspace(0, T_test, N_test)

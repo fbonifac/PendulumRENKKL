@@ -23,6 +23,9 @@ class PendulumSystem():
         self.g = g
         self.x = x0
         self.C = C
+        self.nx = 2
+        self.ny = 1
+        self.nu = 1
 
     def calculate_dx(self, x, t, u):
         """Function that calculates the derivative of the state given:
@@ -69,6 +72,9 @@ class N_PendulumSystem():
         self.l = l
         self.g = g
         self.x = x0
+        self.nx = 2
+        self.ny = 1
+        self.nu = 1
 
     def calculate_dx(self, x, t, u):
         """Function that calculates the derivative of the state given:

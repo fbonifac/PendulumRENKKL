@@ -3,6 +3,7 @@ import torch
 from torch import nn
 import numpy as np
 import time
+import os
 import matplotlib.pyplot as plt
 
 #Own code:
@@ -41,13 +42,32 @@ def train_N_KKLREN(T_trans, dT, N, T_steps, u_range, maxwaitepoch, learning_rate
             -nu: 8 (6 from the z_system, 1 from the input u, 1 from the output y)
             -ny: 1 (1 state of the pendulum)
     """
-    model = N_RENSystem(6, 6, 8, 1, N, bias=True, device=device)
+    model = N_RENSystem(6, 6, 8, 1, N, bias=False, device=device)
+    #Load existing model without biases
+    weights = torch.load("../Data/model.pt", weights_only=True)
+    del weights['sys.bx']
+    del weights['sys.bv']
+    del weights['sys.by']
+    model.load_state_dict(weights)
+    model.sys.bx = torch.zeros(6, device=device)
+    model.sys.bv = torch.zeros(6, device=device)
+    model.sys.by = torch.zeros(1, device=device)
+    model.updateParameters()
 
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     optimizer.zero_grad()
 
     loss = 1.0
+    nrmse = 1.0
     MSE = nn.MSELoss()
+    fnfe_values = np.array([])
+    bnfe_values = np.array([])
+    loss_values = np.array([])
+    nrmse_values = np.array([])
+    e = 0
+    computing = True
+    minlossindex = 0
+    minlossmodel = model.state_dict()
 
     N_trans = int(T_trans / dT)
     N_steps = int(sum(T_steps) / dT)
@@ -69,18 +89,6 @@ def train_N_KKLREN(T_trans, dT, N, T_steps, u_range, maxwaitepoch, learning_rate
 
         ren_y_trans = model.simulate(t_trans_torch, ren_u_trans_torch)
         ren_x_start = model.x.detach()
-        """
-        plt.plot(t_trans, y_trans[np.random.randint(0,N-1),0,:])
-        plt.plot(t_trans, ren_y_trans[np.random.randint(0,N-1),0,:].detach().cpu())
-        plt.show()"""
-
-    fnfe_values = np.array([])
-    bnfe_values = np.array([])
-    loss_values = np.array([])
-    e = 0
-    computing = True
-    minlossindex = 0
-    minlossmodel = model.state_dict()
 
     start = time.time()
 
@@ -106,6 +114,9 @@ def train_N_KKLREN(T_trans, dT, N, T_steps, u_range, maxwaitepoch, learning_rate
     y_predict_epoch_torch = torch.from_numpy(y_predict_epoch).float()
     y_predict_epoch_torch = y_predict_epoch_torch.to(device)
 
+    base_y = torch.zeros_like(y_predict_epoch_torch)
+    NRMSE_base = MSE(base_y, y_predict_epoch_torch)
+
     while(computing):
 
         model.nfe = 0
@@ -114,7 +125,8 @@ def train_N_KKLREN(T_trans, dT, N, T_steps, u_range, maxwaitepoch, learning_rate
         ren_y_epoch = model.simulate(t_epoch_torch, ren_u_epoch_torch, ren_x_start)
 
         loss = MSE(ren_y_epoch, y_predict_epoch_torch)
-        print(f"Epoch #: {e + 1}.\t||\t Local Loss: {loss:.6f}")
+        nrmse = loss/NRMSE_base
+        print(f"Epoch #: {e + 1}.\t||\t Local Loss: {loss:.6f}.\t||\t NRMSE: {nrmse:.6f}")
 
         fnfe = model.nfe
         model.nfe = 0
@@ -128,26 +140,9 @@ def train_N_KKLREN(T_trans, dT, N, T_steps, u_range, maxwaitepoch, learning_rate
         model.nfe = 0
 
         with torch.no_grad():
-            """
-            rindex = np.random.randint(0, N-1)
-            print(f"Plot of the {rindex}th trajectory:")
 
-            plt.subplot(2, 1, 1)
-            plt.plot(t_epoch, y_predict_epoch[rindex, 0, :], linewidth=1.5, label=r'$x_2(t)$')
-            plt.plot(t_epoch, ren_y_epoch[rindex, 0, :].detach().cpu(), linewidth=1.5, label=r'$\hat{x}_2(t)$')
-            plt.xlabel(r'$time [s]$')
-            plt.ylabel(r'$x_2(t) [rad/s]$')
-            plt.legend(loc='best')
-
-            plt.subplot(2, 1, 2)
-            plt.plot(t_epoch, u_epoch[rindex, 0, :], linewidth=1.5, label=r'$u(t)$')
-            plt.xlabel(r'$time [s]$')
-            plt.ylabel(r'$u(t) [rad]$')
-            plt.legend(loc='best')
-
-            plt.show()
-            """
             loss_values = np.append(loss_values, loss.detach().cpu().numpy())
+            nrmse_values = np.append(nrmse_values, nrmse)
             fnfe_values = np.append(fnfe_values, fnfe)
             bnfe_values = np.append(bnfe_values, bnfe)
 
@@ -167,6 +162,8 @@ def train_N_KKLREN(T_trans, dT, N, T_steps, u_range, maxwaitepoch, learning_rate
     print(f"Finished Training Phase. \nTotal time required: {total_time} s")
     print(f"Final NFE-F average: {np.mean(fnfe_values)} \t||\t NFE-B average: {np.mean(bnfe_values)}")
 
-    torch.save(minlossmodel, "model.pt")
+    print(f"Saving model and experiment data...")
+    np.savetxt("../Eval/model_KKL", kkl.A)
+    torch.save(minlossmodel, "../Eval/model_fine.pt")
 
-train_N_KKLREN(30, 0.05, 100, np.array([2, 3]), [-5, 5], 300,1.0e-3)
+train_N_KKLREN(10, 0.05, 100, np.array([2, 3]), [-5, 5], 500,1.0e-3)

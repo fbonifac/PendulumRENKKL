@@ -203,7 +203,7 @@ def trainKKLREN(T_trans, T_step, T_test, dT, step_number, u_range, u_test, learn
 
     plt.show()
 
-    torch.save(model.state_dict(), "model.pt")
+    torch.save(model.state_dict(), "../Data/model.pt")
 
 def test_input(t):
     u = 2.0*np.sin(1.0*t)+1.0*np.sin(2.0*t)+1.0*np.sin(4.0*t)+1.0*np.sin(8.0*t)

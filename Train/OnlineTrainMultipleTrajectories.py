@@ -41,7 +41,7 @@ def train_N_KKLREN(T_trans, dT, N, T_steps, u_range, maxwaitepoch, learning_rate
             -nu: 8 (6 from the z_system, 1 from the input u, 1 from the output y)
             -ny: 1 (1 state of the pendulum)
     """
-    model = N_RENSystem(6, 6, 8, 1, N, bias=True, device=device)
+    model = N_RENSystem(6, 6, 8, 1, N, device=device)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     optimizer.zero_grad()
@@ -128,25 +128,7 @@ def train_N_KKLREN(T_trans, dT, N, T_steps, u_range, maxwaitepoch, learning_rate
         model.nfe = 0
 
         with torch.no_grad():
-            """
-            rindex = np.random.randint(0, N-1)
-            print(f"Plot of the {rindex}th trajectory:")
 
-            plt.subplot(2, 1, 1)
-            plt.plot(t_epoch, y_predict_epoch[rindex, 0, :], linewidth=1.5, label=r'$x_2(t)$')
-            plt.plot(t_epoch, ren_y_epoch[rindex, 0, :].detach().cpu(), linewidth=1.5, label=r'$\hat{x}_2(t)$')
-            plt.xlabel(r'$time [s]$')
-            plt.ylabel(r'$x_2(t) [rad/s]$')
-            plt.legend(loc='best')
-
-            plt.subplot(2, 1, 2)
-            plt.plot(t_epoch, u_epoch[rindex, 0, :], linewidth=1.5, label=r'$u(t)$')
-            plt.xlabel(r'$time [s]$')
-            plt.ylabel(r'$u(t) [rad]$')
-            plt.legend(loc='best')
-
-            plt.show()
-            """
             loss_values = np.append(loss_values, loss.detach().cpu().numpy())
             fnfe_values = np.append(fnfe_values, fnfe)
             bnfe_values = np.append(bnfe_values, bnfe)
@@ -167,6 +149,9 @@ def train_N_KKLREN(T_trans, dT, N, T_steps, u_range, maxwaitepoch, learning_rate
     print(f"Finished Training Phase. \nTotal time required: {total_time} s")
     print(f"Final NFE-F average: {np.mean(fnfe_values)} \t||\t NFE-B average: {np.mean(bnfe_values)}")
 
+    print(f"Values of KKL poles:\n")
+    print(kkl.A)
+    np.savetxt("../Eval/model_KKL", kkl.A)
     torch.save(minlossmodel, "model.pt")
 
 train_N_KKLREN(30, 0.05, 100, np.array([2, 3]), [-5, 5], 300,1.0e-3)
