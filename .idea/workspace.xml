@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b55c3b27-59c5-44de-a9a0-a569e458e23e" name="Changes" comment="Code for N trajectories added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eval/EvaluateModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Eval/EvaluateModel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +148,8 @@
       <workItem from="1762933449388" duration="21219000" />
       <workItem from="1763040700996" duration="77601000" />
       <workItem from="1763378364310" duration="5647000" />
-      <workItem from="1763461377230" duration="13938000" />
+      <workItem from="1763461377230" duration="27981000" />
+      <workItem from="1763637329454" duration="10745000" />
     </task>
     <task id="LOCAL-00001" summary="First commit?">
       <option name="closed" value="true" />
@@ -190,7 +191,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763470555373</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Code for N trajectories added">
+      <option name="closed" value="true" />
+      <created>1763480513825</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1763480513825</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,7 +224,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="Code for N trajectories added" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PendulumRENKKL$EvaluateModel.coverage" NAME="EvaluateModel Coverage Results" MODIFIED="1763466204337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Eval" />
+    <SUITE FILE_PATH="coverage/PendulumRENKKL$EvaluateModel.coverage" NAME="EvaluateModel Coverage Results" MODIFIED="1763639353177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Eval" />
     <SUITE FILE_PATH="coverage/PendulumRENKKL$OnlineTraining.coverage" NAME="OnlineTraining Coverage Results" MODIFIED="1760526896847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Train" />
     <SUITE FILE_PATH="coverage/PendulumRENKKL$KKL.coverage" NAME="KKL Coverage Results" MODIFIED="1760948859889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/KKL" />
     <SUITE FILE_PATH="coverage/PendulumRENKKL$OnlineImproveMultipleTrajectories.coverage" NAME="OnlineImproveMultipleTrajectories Coverage Results" MODIFIED="1762341961718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Train" />

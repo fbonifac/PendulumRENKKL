@@ -152,17 +152,26 @@ def evaluate_model(T_test, test_function, experiment_folder='../Data/Experiment1
         print(nrmse)
 
     if plot:
-        M = 3
-        rindex = np.random.randint(0, N, M*M)
+        M = 5
+        rindex = np.random.randint(0, N, M)
 
         for i in range(M):
-            for j in range(M):
-                plt.subplot(M, M, i*M+j+1)
-                plt.plot(t_test, y_predict_test_torch[rindex[i*M+j], 0, :].detach().cpu(), linewidth=1.5, label=r'$x_2(t)$')
-                plt.plot(t_test, ren_y_test[rindex[i*M+j], 0, :].detach().cpu(), linewidth=1.5, label=r'$\hat{x}_2(t)$')
 
+            plt.figure()
+            plt.subplot(2, 1, 1)
+            plt.plot(t_test, y_predict_test_torch[rindex[i], 0, :].detach().cpu(), linewidth=1.5, label=r'$x_2(t)$')
+            plt.plot(t_test, ren_y_test[rindex[i], 0, :].detach().cpu(), linewidth=1.5, label=r'$\hat{x}_2(t)$')
+            plt.legend(loc='best')
+            plt.xlabel('Time [s]')
+            plt.ylabel(r'$x_2(t) [rad/s]$')
 
-        plt.show()
+            plt.subplot(2, 1, 2)
+            plt.plot(t_test, u_test[rindex[i], 0, :], linewidth=1.5, label=r'$u(t)$')
+            plt.xlabel('Time [s]')
+            plt.ylabel(r'$u(t) [rad/s]$')
+            plt.legend(loc='best')
+
+            plt.show()
 
 
 
@@ -174,4 +183,15 @@ def utest(t):
     u[:,int(n*step):] = (np.random.rand()-0.5)*10*u[:,int(n*step):]
     return u
 
-evaluate_model(8, utest, experiment_folder='../Data/Experiment1/', plot=True)
+def utest_sin(t):
+    N = 10
+    n = t.shape[0]
+    As = np.random.rand(10,1)
+    ws = np.random.rand(10,1)*t[-1]
+    u = np.zeros((1,n))
+    for i in range(N):
+        u = u + As[i]*np.sin(ws[i]*t)
+
+    return u
+
+evaluate_model(8, utest_sin, experiment_folder='../Data/Experiment1/', plot=True)
